@@ -1,0 +1,36 @@
+body {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensuring header is on top */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensuring footer is on top */
+}
+
+main {
+    padding-top: 60px; /* Adjust as per header height */
+    padding-bottom: 60px; /* Adjust as per footer height */
+    overflow-y: auto;
+    height: calc(100vh - 120px); /* Adjust as per header and footer height */
+}
+
+.container-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
