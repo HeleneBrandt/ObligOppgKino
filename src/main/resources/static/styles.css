@@ -1,3 +1,8 @@
+/*
+vet ikke om man trenger style sheet.
+ */
+
+
 body {
     position: relative;
     height: 100vh;
@@ -24,7 +29,7 @@ footer {
 main {
     padding-top: 60px; /* Adjust as per header height */
     padding-bottom: 60px; /* Adjust as per footer height */
-    overflow-y: auto;
+    overflow-y: auto; /* Change this to 'scroll' */
     height: calc(100vh - 120px); /* Adjust as per header and footer height */
 }
 

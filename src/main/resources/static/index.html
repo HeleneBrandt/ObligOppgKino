@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Bestilling av kinobilletter</title>
+
 </head>
 <body>
 
@@ -48,9 +50,11 @@
 
 <ul id="billetter"></ul>
 <button id="slett" onclick="slettAlleBilletter()">Slett alle billettene</button>
+
 <script src="script.js"></script>
 </body>
 </html> -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,14 +62,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestilling av kinobilletter</title>
-   <!-- <link rel="stylesheet" href="styles.css"> -->
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
           crossorigin="anonymous">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <!-- <link rel="stylesheet" href="styles.css"> gjør at det blir feil -->
 
 </head>
-
 <body>
 
 <header class="p-3 text-bg-dark">
@@ -82,7 +86,7 @@
                 <li><a href="#" class="nav-link px-2 text-secondary">OsloKino</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Filmer</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">Kommende filmer</a></li>
-                <!--eventer funker ikke -->
+
                 <li><a href="#" class="nav-link px-2 text-white">Eventer</a></li>
             </ul>
 
@@ -98,107 +102,79 @@
     </div>
 </header>
 
-
-
 <main>
     <div class="container container-main">
-<!--<div class="container d-flex justify-content-center align-items-center vh-100"> -->
-    <div class="col-md-6">
+        <div class="col-md-6">
+            <h1 class="text-center mb-4">Bestilling av kinobilletter</h1>
 
+            <label for="film">Velg film:</label>
+            <select id="film" class="form-control mb-3">
+                <option value="" selected disabled>Velg film her</option>
+                <option value="film1">Dune part 2</option>
+                <option value="film2">Barbie </option>
+                <option value="film3">The boy and the heron </option>
+            </select>
 
-        <h1 class="text-center mb-4" >Bestilling av kinobilletter</h1>
+            <div class="personInfo">
+                <label for="antall">Antall:</label>
+                <input type="text" id="antall" pattern="[0-9]*" class="form-control mb-3">
+            </div>
 
-        <label for="film">Velg film:</label>
-        <select id="film" class="form-control mb-3">
-            <option value="" selected disabled>Velg film her</option>
-            <option value="film1">Film 1</option>
-            <option value="film2">Film 2</option>
-            <option value="film3">Film 3</option>
-        </select>
+            <div class="personInfo">
+                <label for="fornavn">Fornavn:</label>
+                <input type="text" id="fornavn" class="form-control mb-3">
+            </div>
 
+            <div class="personInfo">
+                <label for="etternavn">Etternavn:</label>
+                <input type="text" id="etternavn" class="form-control mb-3">
+            </div>
 
-        <div class="personInfo">
-            <label for="antall">Antall:</label>
-            <input type="text" id="antall" pattern="[0-9]*" class="form-control mb-3">
+            <div class="personInfo">
+                <label for="telefon">Telefonnr:</label>
+                <input type="tel" id="telefon" class="form-control mb-3">
+            </div>
+
+            <div class="personInfo">
+                <label for="epost" class="form-label">Epost:</label>
+                <input type="email" class="form-control" id="epost" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="leggTilBillett()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5
+                    0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7
+                    0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283
+                    0 5.132-5.825-3.85-1.664-6.843 0-5.132"></path>
+                </svg>
+                Kjøp billett
+            </button>
+
+            <h2>Alle billetter</h2>
+            <ul id="billetter"></ul>
+            <button id="slett" onclick="slettAlleBilletter()" class="btn btn-danger">Slett alle billettene</button>
         </div>
-
-        <div class="personInfo">
-            <label for="fornavn">Fornavn:</label>
-            <input type="text" id="fornavn" class="form-control mb-3">
-        </div>
-
-        <div class="personInfo">
-            <label for="etternavn">Etternavn:</label>
-            <input type="text" id="etternavn" class="form-control mb-3">
-        </div>
-        <div class="personInfo">
-            <label for="telefon">Telefonnr:</label>
-            <input type="tel" id="telefon" class="form-control mb-3">
-        </div>
-
-        <!-- Epost m/boot -->
-
-        <div class="personInfo">
-            <!-- endre på for ?  -->
-            <label for="epost" class="form-label"> Epost </label>
-            <input type="email" class="form-control" id="epost" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-
-        <!-- Stylet kjøp billett med bootstrap -->
-        <button type="button" class="btn btn-primary" onclick="leggTilBillett()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5
-                0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7
-                0M14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1M8 7.993c1.664-1.711 5.825 1.283
-                0 5.132-5.825-3.85-1.664-6.843 0-5.132"></path>
-            </svg>
-            Kjøp billett
-        </button>
-
-        <!-- gammel knapp <button id="kjop" onclick="leggTilBillett()" class="btn btn-primary mb-3">Kjøp billett</button>
-             -->
-        <h2>Alle billetter</h2>
-        <!-- stylet med bootstrap -->
-
-        <ul id="billetter"></ul>
-        <button id="slett" onclick="slettAlleBilletter()" class="btn btn-danger">Slett alle billettene</button>
-
     </div>
-        <div>
 </main>
 
-        <footer class="py-3 my-4">
-            <div clas="container">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Om oss</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Kjøpsbetingelser</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Kinopluss</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-            </ul>
-            <p class="text-center text-body-secondary">© 2024 OsloKino</p>
-            </div>
-        </footer>
+<footer class="py-3 my-4">
+    <div class="container">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Om oss</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Kjøpsbetingelser</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Kinopluss</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2024 OsloKino</p>
+    </div>
+</footer>
 
-
-
-    <!-- Link til bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-</div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script> -->
 <script src="script.js"></script>
 
-
 </body>
-
-
 </html>
+
