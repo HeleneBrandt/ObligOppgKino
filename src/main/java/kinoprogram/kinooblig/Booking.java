@@ -8,6 +8,7 @@ public class Booking {
     private String telefon;
     private String epost;
 
+    // konstruktør
     public Booking (String film, int antall, String fornavn, String etternavn, String telefon, String epost){
         this.film = film;
         this.antall = antall;

@@ -10,6 +10,8 @@ import java.util.List;
 
 @RestController
 public class BookingController {
+
+    // her er arrayet flyttet til server 
     private List<Booking> bookings = new ArrayList<>();
 
     @PostMapping("/bookings")
