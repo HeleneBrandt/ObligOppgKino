@@ -18,7 +18,7 @@ public class BookingController {
     public void addBooking(@RequestBody Booking booking) {
         bookings.add(booking);
     }
-
+   // @GetMapping("/bookings")
     @GetMapping("/bookings")
     public List<Booking> getBookings() {
         return bookings;

@@ -8,14 +8,17 @@
         <version>3.2.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>kinoProgram</groupId>
     <artifactId>KinoOblig</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>KinoOblig</name>
     <description>KinoOblig</description>
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -28,17 +31,26 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>6.1.5</version>
         </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
@@ -49,4 +61,6 @@
         </plugins>
     </build>
 
+
 </project>
+

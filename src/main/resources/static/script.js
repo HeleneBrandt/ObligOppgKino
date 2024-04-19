@@ -122,10 +122,13 @@ function leggTilBillett() {
             success: function () {
                 console.log("Booking added successfully");
                 oppdaterBilletter(); // Refresh bookings after adding
+
             },
             error: function () {
                 console.error("Error adding booking");
+
             }
         });
+
     }
 }
